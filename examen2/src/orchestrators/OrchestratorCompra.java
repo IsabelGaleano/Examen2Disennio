@@ -2,6 +2,7 @@ package orchestrators;
 
 import entities.Bitacora;
 import entities.Cliente;
+import entities.TipoReporte;
 import services.BitacoraService;
 import services.ClienteService;
 import services.ProformaService;
@@ -83,7 +84,22 @@ public class OrchestratorCompra {
                 }
                 break;
             case 2:
+                System.out.println("==============REPORTES===================== \n");
+                System.out.println("¿QUÉ REPORTE DESEA CONOCER?");
 
+                out.println("1. DIAS_ENTRE_ESTADO_NUEVO_Y_COMPRA");
+                out.println("2. DIAS_PROMEDIO_CANCELANDO");
+                int opcionReporte = Integer.parseInt(in.readLine());
+                int idCliente;
+                if (opcionReporte == 1) {
+                    out.println("INGRESE EL ID DEL CLIENTE");
+                    idCliente = Integer.parseInt(in.readLine());
+                    out.println(retornarReporte(idCliente, TipoReporte.DIAS_ENTRE_NUEVO_Y_COMPRA));
+                }else if (opcionReporte == 2) {
+                    out.println("INGRESE EL ID DEL CLIENTE");
+                    idCliente = Integer.parseInt(in.readLine());
+                    out.println(retornarReporte(idCliente, TipoReporte.DIAS_PROMEDIO_CANCELANDO));
+                }
                 break;
             case 0:
                 out.println("Fin del programa !!");
@@ -97,6 +113,7 @@ public class OrchestratorCompra {
         int opcion;
         opcion = 0;
         out.println("1. Registrar Cliente");
+        out.println("2. Reportes");
         out.println("0. Salir del sistema");
         out.println("Digite la opción");
         opcion = Integer.parseInt(in.readLine());
@@ -124,6 +141,10 @@ public class OrchestratorCompra {
 
     }
 
+    public static String retornarReporte(int clienteId, TipoReporte tipoReporte) throws Exception {
+        bitacoraService = new BitacoraService();
+        return bitacoraService.retornarReporte(clienteId, tipoReporte);
+    }
     public static void compraRechazada(Cliente cliente) throws Exception {
         crearBitacora(cliente, "11/03/2022","NO_COMPRAR");
         System.out.println("USTED HA RECHAZADO LA COMPRA... /n");

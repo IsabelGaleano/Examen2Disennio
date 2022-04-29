@@ -1,0 +1,8 @@
+package entities;
+
+public enum TipoReporte {
+    DIAS_ENTRE_NUEVO_Y_COMPRA,
+    DIAS_PROMEDIO_CANCELANDO,
+    PENDIENTES_Y_DIAS,
+    TIEMPO_SEGUIMIENTO_Y_POSTERIORES
+}
