@@ -7,7 +7,6 @@ import java.util.Date;
 import accesodatos.AccesoBD;
 import entities.Bitacora;
 import entities.Cliente;
-import org.omg.CORBA.PRIVATE_MEMBER;
 
 public class ClienteService {
     static AccesoBD accesoBD;
