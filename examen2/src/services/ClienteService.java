@@ -37,9 +37,13 @@ public class ClienteService {
         Cliente tmpCliente = clienteCreado();
 
         //Aqui se crea la primera bitacora con el cliente nuevo
-        Date fechaBitacora = new SimpleDateFormat("dd/MM/yyyy").parse("10/03/2022");
+        //Date fechaBitacora = new SimpleDateFormat("dd/MM/yyyy").parse("10/03/2022");
 
-        bitacoraService.crearBitacora(new Bitacora(tmpCliente,"NUEVO", fechaBitacora));
+        SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date(System.currentTimeMillis());
+        System.out.println(formatter.format(date));
+
+        bitacoraService.crearBitacora(new Bitacora(tmpCliente,"NUEVO", date));
 
         return tmpCliente;
     }
