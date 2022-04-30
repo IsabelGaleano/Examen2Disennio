@@ -111,6 +111,9 @@ public class OrchestratorCompra {
             case 3:
                 defaultSalesData();
                 break;
+            case 4:
+                out.println(mostarListadoCLientes());
+                break;
             case 0:
                 out.println("Fin del programa !!");
                 break;
@@ -125,6 +128,7 @@ public class OrchestratorCompra {
         out.println("1. Registrar Cliente");
         out.println("2. Reportes");
         out.println("3. Cargar datos por defecto");
+        out.println("4. Ver lista de clientes");
         out.println("0. Salir del sistema");
 
         out.println("Digite la opción");
@@ -140,7 +144,6 @@ public class OrchestratorCompra {
         Date modificado = new SimpleDateFormat("dd/MM/yyyy").parse("10/03/2022");
 
         Cliente cliente = new Cliente("Isabel", "Galeano", "NUEVO", "84511935",followup, creado, modificado);
-
 
         return clienteService.crearCliente(cliente);
     }
@@ -209,9 +212,15 @@ public class OrchestratorCompra {
 
         Cliente Cliente12 =   new Cliente("Daniel", "Seas", "NUEVO", "97641582",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"));
         Cliente12 = clienteService.crearCliente(Cliente12);
+
         crearBitacora(Cliente12,"18/04/2022","SEGUIMIENTO");
         crearBitacora(Cliente12,"26/04/2022","COMPRÓ");
 
+    }
+
+    public static String mostarListadoCLientes() throws Exception{
+        clienteService = new ClienteService();
+        return clienteService.getClientes();
     }
 
     public static void crearBitacora(Cliente cliente, String vFecha, String estado) throws Exception {

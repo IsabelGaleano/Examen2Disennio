@@ -67,4 +67,24 @@ public class ClienteService {
 
         return cliente;
     }
+
+    public static String getClientes() throws Exception {
+        String retornar = "******************** Listado de clientes ******************** \n";
+        String query = "SELECT * FROM Clientes ORDER BY ID ASC";
+
+        ResultSet rs = accesoBD.ejecutarSQL(query);
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String  nombre = rs.getString("nombre");
+            String  apellido = rs.getString("apellido");
+            String  status = rs.getString("status");
+            retornar +="Cliente Id: " +id +" Nombre:"+ nombre + " " + apellido + " Estado:" + status + "  \n " ;
+
+        }
+
+        return retornar;
+    }
+
+
 }
