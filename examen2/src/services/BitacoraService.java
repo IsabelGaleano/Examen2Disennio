@@ -35,7 +35,7 @@ public class BitacoraService {
     public String retornarReporte(int clienteId, TipoReporte tipoReporte) {
         String query = "";
         ResultSet resultados;
-        String retornar = "No hay resultados";
+        String retornar = "";
         try{
             switch (tipoReporte){
                 case DIAS_ENTRE_NUEVO_Y_COMPRA:
@@ -57,6 +57,24 @@ public class BitacoraService {
                         int dias = resultados.getInt("dias");
                         retornar="Fecha de estado nuevo: " + fechaNuevo + ", Fecha de que cancelado: " + fechaNoComprar + ", días: " + dias;
                     }
+                    break;
+
+                case PENDIENTES_Y_DIAS:
+                    query = "select c.nombre,c.apellido,\n" +
+                            " TIMESTAMPDIFF(DAY, c.creado, (select b.fecha from bitacoras b where b.idCliente = c.id and status = 'PAGO_PENDIENTE')) AS dias_transcurridos\n" +
+                            "from clientes c \n" +
+                            "where c.status = 'PAGO_PENDIENTE' \n";
+                    resultados = accesoBD.ejecutarSQL(query);
+                    while (resultados.next()) {
+                        String  nombre = resultados.getString("nombre");
+                        String  apellido = resultados.getString("apellido");
+                        int dias_transcurridos = resultados.getInt("dias_transcurridos");
+
+                        retornar +=" El cliente: " + nombre +" " + apellido  + " tiene " + dias_transcurridos + " pendientes de pago \n " ;
+                    }
+                    break;
+                case TIEMPO_SEGUIMIENTO_Y_POSTERIORES:
+                    retornar ="";
                     break;
             }
         }catch (SQLException exception){

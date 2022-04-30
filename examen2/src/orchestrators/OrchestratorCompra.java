@@ -89,6 +89,8 @@ public class OrchestratorCompra {
 
                 out.println("1. DIAS_ENTRE_ESTADO_NUEVO_Y_COMPRA");
                 out.println("2. DIAS_PROMEDIO_CANCELANDO");
+                out.println("3. PENDIENTES_Y_DIAS");
+                out.println("4. TIEMPO_SEGUIMIENTO_Y_POSTERIORES");
                 int opcionReporte = Integer.parseInt(in.readLine());
                 int idCliente;
                 if (opcionReporte == 1) {
@@ -99,7 +101,15 @@ public class OrchestratorCompra {
                     out.println("INGRESE EL ID DEL CLIENTE");
                     idCliente = Integer.parseInt(in.readLine());
                     out.println(retornarReporte(idCliente, TipoReporte.DIAS_PROMEDIO_CANCELANDO));
+                }else if (opcionReporte == 3) {
+                    out.println(retornarReporte(0, TipoReporte.PENDIENTES_Y_DIAS));
                 }
+                else if (opcionReporte == 4) {
+                    out.println(retornarReporte(0, TipoReporte.TIEMPO_SEGUIMIENTO_Y_POSTERIORES));
+                }
+                break;
+            case 3:
+                defaultSalesData();
                 break;
             case 0:
                 out.println("Fin del programa !!");
@@ -114,7 +124,9 @@ public class OrchestratorCompra {
         opcion = 0;
         out.println("1. Registrar Cliente");
         out.println("2. Reportes");
+        out.println("3. Cargar datos por defecto");
         out.println("0. Salir del sistema");
+
         out.println("Digite la opción");
         opcion = Integer.parseInt(in.readLine());
         return opcion;
@@ -133,6 +145,30 @@ public class OrchestratorCompra {
         return clienteService.crearCliente(cliente);
     }
 
+    public static void defaultSalesData() throws Exception{
+        clienteService = new ClienteService();
+
+        Date followup= new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022");
+        Date creado = new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022");
+        Date modificado = new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022");
+
+
+        clienteService.crearCliente( new Cliente("Stepahnny", "Mata", "NUEVO", "85656565",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022")));
+        clienteService.crearCliente( new Cliente("Jose", "Calvo", "NUEVO", "57631598",new SimpleDateFormat("dd/MM/yyyy").parse("12/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("12/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("12/04/2022")));
+        clienteService.crearCliente( new Cliente("Manuel", "Ramirez", "NUEVO", "54934678",new SimpleDateFormat("dd/MM/yyyy").parse("13/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("13/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("13/04/2022")));
+        clienteService.crearCliente( new Cliente("Maria", "Arias", "NUEVO", "94761358",new SimpleDateFormat("dd/MM/yyyy").parse("16/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("16/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("16/04/2022")));
+        clienteService.crearCliente( new Cliente("Andres", "Martinez", "NUEVO", "91346820",new SimpleDateFormat("dd/MM/yyyy").parse("20/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("20/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("20/04/2022")));
+        clienteService.crearCliente( new Cliente("Carlos", "Salinas", "NUEVO", "84361489",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022")));
+        clienteService.crearCliente( new Cliente("Gabrila", "Vindas", "NUEVO", "64850516",new SimpleDateFormat("dd/MM/yyyy").parse("17/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("17/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("17/04/2022")));
+        clienteService.crearCliente( new Cliente("Manuel", "Morales", "NUEVO", "84937510",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022")));
+        clienteService.crearCliente( new Cliente("Karla", "Castro", "NUEVO", "34891564",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022")));
+        clienteService.crearCliente( new Cliente("Karina", "Roman", "NUEVO", "79341825",new SimpleDateFormat("dd/MM/yyyy").parse("18/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("18/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("18/04/2022")));
+        clienteService.crearCliente( new Cliente("Daniela", "Zamora", "NUEVO", "34891567",new SimpleDateFormat("dd/MM/yyyy").parse("19/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("19/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("19/04/2022")));
+        clienteService.crearCliente( new Cliente("Daniel", "Seas", "NUEVO", "97641582",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022")));
+
+
+    }
+
     public static void crearBitacora(Cliente cliente, String vFecha, String estado) throws Exception {
         bitacoraService = new BitacoraService();
         Date fecha= new SimpleDateFormat("dd/MM/yyyy").parse(vFecha);
@@ -145,6 +181,7 @@ public class OrchestratorCompra {
         bitacoraService = new BitacoraService();
         return bitacoraService.retornarReporte(clienteId, tipoReporte);
     }
+
     public static void compraRechazada(Cliente cliente) throws Exception {
         crearBitacora(cliente, "11/03/2022","NO_COMPRAR");
         System.out.println("USTED HA RECHAZADO LA COMPRA... /n");
