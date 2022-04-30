@@ -58,6 +58,26 @@ public class BitacoraService {
                         retornar="Fecha de estado nuevo: " + fechaNuevo + ", Fecha de que cancelado: " + fechaNoComprar + ", días: " + dias;
                     }
                     break;
+                case PENDIENTES_Y_DIAS:
+                    query = "SELECT idCliente, accionNuevo.fecha as FechaNuevo, accionNoComprar.fecha as FechaNoComprar, DATEDIFF(accionNoComprar.fecha, accionNuevo.fecha) dias FROM (SELECT fecha, idCliente FROM bitacoras WHERE `status`=\"NUEVO\") accionNuevo JOIN (SELECT fecha, idCliente FROM bitacoras WHERE `status` =\"NO_COMPRAR\") accionNoComprar USING (idCliente) WHERE idCliente="+clienteId;
+                    resultados = accesoBD.ejecutarSQL(query);
+                    while (resultados.next()) {
+                        Date fechaNuevo = resultados.getDate("FechaNuevo");
+                        Date fechaNoComprar = resultados.getDate("FechaNoComprar");
+                        int dias = resultados.getInt("dias");
+                        retornar="Fecha de estado nuevo: " + fechaNuevo + ", Fecha de que cancelado: " + fechaNoComprar + ", días: " + dias;
+                    }
+                    break;
+                case TIEMPO_SEGUIMIENTO_Y_POSTERIORES:
+                    query = "SELECT idCliente, accionNuevo.fecha as FechaNuevo, accionNoComprar.fecha as FechaNoComprar, DATEDIFF(accionNoComprar.fecha, accionNuevo.fecha) dias FROM (SELECT fecha, idCliente FROM bitacoras WHERE `status`=\"NUEVO\") accionNuevo JOIN (SELECT fecha, idCliente FROM bitacoras WHERE `status` =\"NO_COMPRAR\") accionNoComprar USING (idCliente) WHERE idCliente="+clienteId;
+                    resultados = accesoBD.ejecutarSQL(query);
+                    while (resultados.next()) {
+                        Date fechaNuevo = resultados.getDate("FechaNuevo");
+                        Date fechaNoComprar = resultados.getDate("FechaNoComprar");
+                        int dias = resultados.getInt("dias");
+                        retornar="Fecha de estado nuevo: " + fechaNuevo + ", Fecha de que cancelado: " + fechaNoComprar + ", días: " + dias;
+                    }
+                    break;
             }
         }catch (SQLException exception){
             retornar="No hay resultados";
