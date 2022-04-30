@@ -58,6 +58,7 @@ public class BitacoraService {
                         int dias = resultados.getInt("dias");
                         retornar="Fecha de estado nuevo: " + fechaNuevo + ", Fecha de que cancelado: " + fechaNoComprar + ", días: " + dias;
                     }
+
                     break;
 
                 case PENDIENTES_Y_DIAS:
@@ -76,16 +77,15 @@ public class BitacoraService {
                     break;
                 case TIEMPO_SEGUIMIENTO_Y_POSTERIORES:
                     query = "select c.nombre,c.apellido,\n" +
-                            " TIMESTAMPDIFF(DAY, c.creado, (select b.fecha from bitacoras b where b.idCliente = c.id and status = 'PAGO_PENDIENTE')) AS dias_transcurridos\n" +
-                            "from clientes c \n" +
-                            "where c.status = 'PAGO_PENDIENTE' \n";
+                            " TIMESTAMPDIFF(DAY, c.creado,(select b.fecha from bitacoras b where b.idCliente = c.id and status = 'SEGUIMIENTO')) AS dias_transcurridos\n" +
+                            "from clientes c ";
                     resultados = accesoBD.ejecutarSQL(query);
                     while (resultados.next()) {
                         String  nombre = resultados.getString("nombre");
                         String  apellido = resultados.getString("apellido");
                         int dias_transcurridos = resultados.getInt("dias_transcurridos");
 
-                        retornar +=" El cliente: " + nombre +" " + apellido  + " tiene " + dias_transcurridos + " pendientes de pago \n " ;
+                        retornar +=" El cliente: " + nombre +" " + apellido  + " tiene " + dias_transcurridos + " hasta el segumiento \n " ;
                     }
                     break;
             }
