@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1225ff0c-0ca5-4cff-a7bc-f7b2d9d64485" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_15.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/untitled104.iml" beforeDir="false" afterPath="$PROJECT_DIR$/examen2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ClienteService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +84,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mysql-connector-java-8.0.15.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Componentes/Examenes/Examen3/examenComponentes" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -115,19 +113,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="examen2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="examen2" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.OrchestratorCompra" />
@@ -144,7 +129,9 @@
       <updated>1651019475668</updated>
       <workItem from="1651019476849" duration="479000" />
       <workItem from="1651020273547" duration="233000" />
-      <workItem from="1651082743712" duration="23024000" />
+      <workItem from="1651082743712" duration="23446000" />
+      <workItem from="1651205280738" duration="703000" />
+      <workItem from="1651267702630" duration="21000" />
     </task>
     <servers />
   </component>
@@ -161,5 +148,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
