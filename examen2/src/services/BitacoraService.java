@@ -28,7 +28,8 @@ public class BitacoraService {
 
         accesoBD.ejecutarQuery(query);
 
-
+        String query2 = "UPDATE clientes SET status = '" + bitacora.getStatus()+ "'  WHERE id = "+bitacora.getCliente().getId()+" ;";
+        accesoBD.ejecutarQuery(query2);
     }
 
 
@@ -74,7 +75,18 @@ public class BitacoraService {
                     }
                     break;
                 case TIEMPO_SEGUIMIENTO_Y_POSTERIORES:
-                    retornar ="";
+                    query = "select c.nombre,c.apellido,\n" +
+                            " TIMESTAMPDIFF(DAY, c.creado, (select b.fecha from bitacoras b where b.idCliente = c.id and status = 'PAGO_PENDIENTE')) AS dias_transcurridos\n" +
+                            "from clientes c \n" +
+                            "where c.status = 'PAGO_PENDIENTE' \n";
+                    resultados = accesoBD.ejecutarSQL(query);
+                    while (resultados.next()) {
+                        String  nombre = resultados.getString("nombre");
+                        String  apellido = resultados.getString("apellido");
+                        int dias_transcurridos = resultados.getInt("dias_transcurridos");
+
+                        retornar +=" El cliente: " + nombre +" " + apellido  + " tiene " + dias_transcurridos + " pendientes de pago \n " ;
+                    }
                     break;
             }
         }catch (SQLException exception){

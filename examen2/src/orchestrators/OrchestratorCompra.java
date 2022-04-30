@@ -153,19 +153,64 @@ public class OrchestratorCompra {
         Date modificado = new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022");
 
 
-        clienteService.crearCliente( new Cliente("Stepahnny", "Mata", "NUEVO", "85656565",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022")));
-        clienteService.crearCliente( new Cliente("Jose", "Calvo", "NUEVO", "57631598",new SimpleDateFormat("dd/MM/yyyy").parse("12/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("12/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("12/04/2022")));
-        clienteService.crearCliente( new Cliente("Manuel", "Ramirez", "NUEVO", "54934678",new SimpleDateFormat("dd/MM/yyyy").parse("13/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("13/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("13/04/2022")));
-        clienteService.crearCliente( new Cliente("Maria", "Arias", "NUEVO", "94761358",new SimpleDateFormat("dd/MM/yyyy").parse("16/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("16/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("16/04/2022")));
-        clienteService.crearCliente( new Cliente("Andres", "Martinez", "NUEVO", "91346820",new SimpleDateFormat("dd/MM/yyyy").parse("20/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("20/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("20/04/2022")));
-        clienteService.crearCliente( new Cliente("Carlos", "Salinas", "NUEVO", "84361489",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022")));
-        clienteService.crearCliente( new Cliente("Gabrila", "Vindas", "NUEVO", "64850516",new SimpleDateFormat("dd/MM/yyyy").parse("17/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("17/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("17/04/2022")));
-        clienteService.crearCliente( new Cliente("Manuel", "Morales", "NUEVO", "84937510",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022")));
-        clienteService.crearCliente( new Cliente("Karla", "Castro", "NUEVO", "34891564",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022")));
-        clienteService.crearCliente( new Cliente("Karina", "Roman", "NUEVO", "79341825",new SimpleDateFormat("dd/MM/yyyy").parse("18/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("18/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("18/04/2022")));
-        clienteService.crearCliente( new Cliente("Daniela", "Zamora", "NUEVO", "34891567",new SimpleDateFormat("dd/MM/yyyy").parse("19/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("19/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("19/04/2022")));
-        clienteService.crearCliente( new Cliente("Daniel", "Seas", "NUEVO", "97641582",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022")));
+        Cliente Cliente1 = new Cliente("Stepahnny", "Mata", "NUEVO", "85656565",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"));
+        Cliente1 = clienteService.crearCliente(Cliente1);
+        crearBitacora(Cliente1,"15/04/2022","SEGUIMIENTO");
+        crearBitacora(Cliente1,"15/04/2022","PENDIENTE");
 
+        Cliente Cliente2 = new Cliente("Jose", "Calvo", "NUEVO", "57631598",new SimpleDateFormat("dd/MM/yyyy").parse("12/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("12/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("12/04/2022"));
+        Cliente2 = clienteService.crearCliente(Cliente2);
+        crearBitacora(Cliente2,"12/04/2022","NO_COMPRAR");
+
+        Cliente Cliente3 = new Cliente("Manuel", "Ramirez", "NUEVO", "54934678",new SimpleDateFormat("dd/MM/yyyy").parse("13/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("13/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("13/04/2022"));
+        Cliente3 = clienteService.crearCliente(Cliente3);
+        crearBitacora(Cliente3,"19/04/2022","SEGUIMIENTO");
+        crearBitacora(Cliente3,"20/04/2022","NO_COMPRAR");
+
+        Cliente Cliente4 =  new Cliente("Maria", "Arias", "NUEVO", "94761358",new SimpleDateFormat("dd/MM/yyyy").parse("16/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("16/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("16/04/2022"));
+        Cliente4 = clienteService.crearCliente(Cliente4);
+        crearBitacora(Cliente4,"21/04/2022","SEGUIMIENTO");
+        crearBitacora(Cliente4,"21/04/2022","COMPRÓ");
+
+        Cliente Cliente5 =   new Cliente("Andres", "Martinez", "NUEVO", "91346820",new SimpleDateFormat("dd/MM/yyyy").parse("20/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("20/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("20/04/2022"));
+        Cliente5 = clienteService.crearCliente(Cliente5);
+        crearBitacora(Cliente5,"25/04/2022","SEGUIMIENTO");
+        crearBitacora(Cliente5,"25/04/2022","PAGO_PENDIENTE");
+
+        Cliente Cliente6 =   new Cliente("Carlos", "Salinas", "NUEVO", "84361489",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"));
+        Cliente6 = clienteService.crearCliente(Cliente6);
+        crearBitacora(Cliente6,"15/04/2022","SEGUIMIENTO");
+        crearBitacora(Cliente6,"15/04/2022","PAGO_PENDIENTE");
+        crearBitacora(Cliente6,"16/04/2022","COMPRÓ");
+
+        Cliente Cliente7 =   new Cliente("Gabrila", "Vindas", "NUEVO", "64850516",new SimpleDateFormat("dd/MM/yyyy").parse("17/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("17/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("17/04/2022"));
+        Cliente7 =  clienteService.crearCliente(Cliente7);
+        crearBitacora(Cliente7,"21/04/2022","SEGUIMIENTO");
+        crearBitacora(Cliente7,"21/04/2022","COMPRÓ");
+
+        Cliente Cliente8 =   new Cliente("Manuel", "Morales", "NUEVO", "84937510",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"));
+        Cliente8 =  clienteService.crearCliente(Cliente8);
+        crearBitacora(Cliente8,"16/04/2022","SEGUIMIENTO");
+        crearBitacora(Cliente8,"16/04/2022","NO_COMPRAR");
+
+        Cliente Cliente9 =   new Cliente("Karla", "Castro", "NUEVO", "34891564",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"));
+        Cliente9 =  clienteService.crearCliente(Cliente9);
+        crearBitacora(Cliente9,"18/04/2022","SEGUIMIENTO");
+        crearBitacora(Cliente9,"19/04/2022","PENDIENTE");
+
+        Cliente Cliente10 =   new Cliente("Karina", "Roman", "NUEVO", "79341825",new SimpleDateFormat("dd/MM/yyyy").parse("18/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("18/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("18/04/2022"));
+        Cliente10 = clienteService.crearCliente(Cliente10);
+        crearBitacora(Cliente10,"23/04/2022","SEGUIMIENTO");
+        crearBitacora(Cliente10,"23/04/2022","PENDIENTE");
+
+        Cliente Cliente11 =   new Cliente("Daniela", "Zamora", "NUEVO", "34891567",new SimpleDateFormat("dd/MM/yyyy").parse("19/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("19/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("19/04/2022"));
+        Cliente11 = clienteService.crearCliente(Cliente11);
+        crearBitacora(Cliente11,"19/04/2022","NO_COMPRAR");
+
+        Cliente Cliente12 =   new Cliente("Daniel", "Seas", "NUEVO", "97641582",new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"), new SimpleDateFormat("dd/MM/yyyy").parse("10/04/2022"));
+        Cliente12 = clienteService.crearCliente(Cliente12);
+        crearBitacora(Cliente12,"18/04/2022","SEGUIMIENTO");
+        crearBitacora(Cliente12,"26/04/2022","COMPRÓ");
 
     }
 
