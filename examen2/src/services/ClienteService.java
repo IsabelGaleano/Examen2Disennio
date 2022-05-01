@@ -8,6 +8,7 @@ import accesodatos.AccesoBD;
 import entities.Bitacora;
 import entities.Cliente;
 
+
 public class ClienteService {
     static AccesoBD accesoBD;
 

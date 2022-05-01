@@ -13,7 +13,7 @@ public class AccesoBD {
             driver = "com.mysql.cj.jdbc.Driver";
 
             Class.forName(driver);
-            String connectionUrl1 = "jdbc:mysql://localhost/bddisennio?user=root&password=Hola123&serverTimezone=UTC";
+            String connectionUrl1 = "jdbc:mysql://localhost/bddisennio?user=root&password=isabel&serverTimezone=UTC";
             conn = DriverManager.getConnection(connectionUrl1);
             stmt = conn.createStatement();
         } catch (SQLException e) {
