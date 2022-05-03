@@ -7,7 +7,7 @@ import java.util.Date;
 import accesodatos.AccesoBD;
 import entities.Bitacora;
 import entities.Cliente;
-import org.omg.CORBA.PRIVATE_MEMBER;
+
 
 public class ClienteService {
     static AccesoBD accesoBD;
@@ -37,8 +37,16 @@ public class ClienteService {
         Cliente tmpCliente = clienteCreado();
 
         //Aqui se crea la primera bitacora con el cliente nuevo
-        Date fechaBitacora = new SimpleDateFormat("dd/MM/yyyy").parse("10/03/2022");
+        String patternB = "dd/MM/yyyy";
+        SimpleDateFormat simpleDateFormatB = new SimpleDateFormat(patternB);
+        String creadoB = simpleDateFormatB.format(cliente.getCreado());
+        Date fechaBitacora = new SimpleDateFormat("dd/MM/yyyy").parse(creadoB);
 
+        /*
+        SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date(System.currentTimeMillis());
+        System.out.println(formatter.format(date));
+        */
         bitacoraService.crearBitacora(new Bitacora(tmpCliente,"NUEVO", fechaBitacora));
 
         return tmpCliente;
@@ -60,4 +68,24 @@ public class ClienteService {
 
         return cliente;
     }
+
+    public static String getClientes() throws Exception {
+        String retornar = "******************** Listado de clientes ******************** \n";
+        String query = "SELECT * FROM Clientes ORDER BY ID ASC";
+
+        ResultSet rs = accesoBD.ejecutarSQL(query);
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String  nombre = rs.getString("nombre");
+            String  apellido = rs.getString("apellido");
+            String  status = rs.getString("status");
+            retornar +="Cliente Id: " +id +" Nombre:"+ nombre + " " + apellido + " Estado:" + status + "  \n " ;
+
+        }
+
+        return retornar;
+    }
+
+
 }
